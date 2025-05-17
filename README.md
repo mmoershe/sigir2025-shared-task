@@ -44,7 +44,7 @@ docker-compose down
 ## About the data 
 
 For both Task A and Task B, predetermined queries/utterances are provided in the repository to initialize the simulation with the original user inputs.
-In Task A, the dataset also includes metadata about user interactions, including timestamps for each query and subsequent actions.
+In Task A, the dataset also includes metadata about user interactions, including timestamps for each query and subsequent actions, that you might use for your query predictions.
 
 [Predetermined Queries for Task A](./simiir/predetermined_queries_Task_A.csv)
 
@@ -53,7 +53,7 @@ In Task A, the dataset also includes metadata about user interactions, including
 Detailed task descriptions for Task A and Task B are available on the ![workshop website](https://sim4ia.org/sigir2025/). To run initial experiments for these tasks, follow the steps outlined below.
 
 1. Adjust your query reformulation approach 
-    - You can find existing implementations in `simiir/user/query_generators/` for Task A1/A2 and `simiir/user/utterance_generators` 
+    - You can find existing implementations in `simiir/user/query_generators/` for Task A1/A2 and `simiir/user/utterance_generators` for Task B
 2. Create a new user configuration that uses your query reformulation approach
     - Existing user configurations can be found in `example_sims/users/`
 3. Add your new user configuration to the experimental setup
