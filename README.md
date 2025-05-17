@@ -73,6 +73,9 @@ python run_simiir.py ../example_sims/core_Sim4IA_conversational_simulation.xml
 
 ```
 
+For the Conversational Search Task, an LLM is currently required for generating utterances. To run the simulation described above, follow the steps under "How to do the experiments with LLMs in Codespaces?" to set up and execute your chosen model.
+If you decide to use a different model, make sure to adapt the configuration accordingly.
+
 6. Instructions and a pipeline for the evaluation of your approach will follow soon. 
 
 
