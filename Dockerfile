@@ -16,7 +16,7 @@ RUN pip install python-terrier
 RUN apt-get install -y openjdk-17-jdk-headless
 
 # Install Ollama
-#RUN curl -fsSL https://ollama.com/install.sh | sh
+RUN curl -fsSL https://ollama.com/install.sh | sh
 
 # Set workspace in container
 WORKDIR /workspace

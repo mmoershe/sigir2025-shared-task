@@ -18,10 +18,10 @@ Date:   2024-04-20
 
         If you want to add your own topics, add them to the corresponding topic file that you can find under the given path. If you want to use relevance judgements, you can add them to the qrels file that is also found under the given path.
         -->
-	    <topic id="1" filename="../example_data/CORE/topics_Task_B/topic.1" qrelsFilename="../example_data/CORE/core.qrels" />
+	    <!--
+		<topic id="1" filename="../example_data/CORE/topics_Task_B/topic.1" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="2" filename="../example_data/CORE/topics_Task_B/topic.2" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="3" filename="../example_data/CORE/topics_Task_B/topic.3" qrelsFilename="../example_data/CORE/core.qrels" />
-		
 		<topic id="4" filename="../example_data/CORE/topics_Task_B/topic.4" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="5" filename="../example_data/CORE/topics_Task_B/topic.5" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="6" filename="../example_data/CORE/topics_Task_B/topic.6" qrelsFilename="../example_data/CORE/core.qrels" />
@@ -36,9 +36,11 @@ Date:   2024-04-20
 	    <topic id="15" filename="../example_data/CORE/topics_Task_B/topic.15" qrelsFilename="../example_data/CORE/core.qrels" />
 		<topic id="16" filename="../example_data/CORE/topics_Task_B/topic.16" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="17" filename="../example_data/CORE/topics_Task_B/topic.17" qrelsFilename="../example_data/CORE/core.qrels" />
-	    <topic id="18" filename="../example_data/CORE/topics_Task_B/topic.18" qrelsFilename="../example_data/CORE/core.qrels" />
+	    -->
+		<topic id="18" filename="../example_data/CORE/topics_Task_B/topic.18" qrelsFilename="../example_data/CORE/core.qrels" />
 		<topic id="19" filename="../example_data/CORE/topics_Task_B/topic.19" qrelsFilename="../example_data/CORE/core.qrels" />
-	    <topic id="20" filename="../example_data/CORE/topics_Task_B/topic.20" qrelsFilename="../example_data/CORE/core.qrels" />
+	    <!--
+		<topic id="20" filename="../example_data/CORE/topics_Task_B/topic.20" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="21" filename="../example_data/CORE/topics_Task_B/topic.21" qrelsFilename="../example_data/CORE/core.qrels" />
 		<topic id="22" filename="../example_data/CORE/topics_Task_B/topic.22" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="23" filename="../example_data/CORE/topics_Task_B/topic.23" qrelsFilename="../example_data/CORE/core.qrels" />
@@ -64,7 +66,7 @@ Date:   2024-04-20
 		<topic id="43" filename="../example_data/CORE/topics_Task_B/topic.43" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="44" filename="../example_data/CORE/topics_Task_B/topic.44" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="45" filename="../example_data/CORE/topics_Task_B/topic.45" qrelsFilename="../example_data/CORE/core.qrels" />
-		
+		-->
 	</topics>
 
 	<users>

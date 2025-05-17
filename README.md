@@ -95,7 +95,7 @@ docker exec -it SIM4IA_container bash
 3. Start ollama
 ```shell
 
-ollama serve
+ollama serve &
 
 ```
 4. Install and Run the Selected Model
@@ -106,7 +106,9 @@ Install and run the model you want to use (e.g., gemma:2b):
 ollama run gemma:2b
 
 ```
-5. Configure Your LLM-Based Query Generator
+5. Exit the prompt in the terminal with Ctrl + D
+
+6. Configure Your LLM-Based Query Generator
 Open the file example_sims/users/core_LLM_based_Queries.xml. This file is used to define how the LLM generates queries.
 Make sure to update the following line to specify the model you want to use:
 ```xml
@@ -116,9 +118,9 @@ Make sure to update the following line to specify the model you want to use:
 ```
 Replace gemma:2b with the name of the model you installed.
 
-6. Add your user configuration to `example_sims/core_bm25_Sim4IA_LLM_approach.xml`
-7. Navigate to the `simiir` directory in the terminal
-8. Run the configuration file with:
+7. Add your user configuration to `example_sims/core_bm25_Sim4IA_LLM_approach.xml`
+8. Navigate to the `simiir` directory in the terminal
+9. Run the configuration file with:
 ```shell
 
 python run_simiir.py ../example_sims/core_bm25_Sim4IA_LLM_approach.xml 

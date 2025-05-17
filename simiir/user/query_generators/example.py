@@ -47,7 +47,6 @@ class QuestionGenerator_A1(BaseQueryGenerator):
             line_user = line[1]
             line_topic = line[2]
             line_terms = line[3]
-            print(line_terms)
             if line_user == self.__user and line_topic == topic.id:
                 given_queries.append((line_terms, int(line_qid)))
 

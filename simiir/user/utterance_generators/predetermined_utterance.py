@@ -65,7 +65,7 @@ class PredeterminedAndLLMGeneratedUtteranceGenerator(BaseUtteranceGenerator):
             
         issued_utterance_list = user_context.get_issued_utterances()
         
-        utterances = self._utterance_dict[str(topic.id)]
+        utterances = self._utterance_dict[str(topic.id)][:-1]
         self.initial_predetermined_uttterance_amount = len(utterances)
 
         candidate_utterance = None

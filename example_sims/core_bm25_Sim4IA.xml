@@ -61,7 +61,7 @@ Date:   2015-09-09
 	    <topic id="41" filename="../example_data/CORE/topics_Task_A/topic.41" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="42" filename="../example_data/CORE/topics_Task_A/topic.42" qrelsFilename="../example_data/CORE/core.qrels" />
 		<topic id="43" filename="../example_data/CORE/topics_Task_A/topic.43" qrelsFilename="../example_data/CORE/core.qrels" />
-	    <topic id="44" filename="../example_data/CORE/topics_Task_A/topic.44" qrelsFilename="../example_data/CORE/core.qrels" />
+		<topic id="44" filename="../example_data/CORE/topics_Task_A/topic.44" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="45" filename="../example_data/CORE/topics_Task_A/topic.45" qrelsFilename="../example_data/CORE/core.qrels" />
  	</topics>
 	
