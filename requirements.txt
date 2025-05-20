@@ -65,3 +65,4 @@ yarl==1.9.4
 ipykernel==6.29.5
 matplotlib==3.10.1
 seaborn==0.13.2
+python-terrier==0.13.0
