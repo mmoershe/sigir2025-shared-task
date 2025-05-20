@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   sim4ia_dis22:
     build:
