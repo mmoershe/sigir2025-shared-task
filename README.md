@@ -116,7 +116,7 @@ ollama run gemma:2b
 5. Exit the prompt in the terminal with Ctrl + D
 
 6. Configure Your LLM-Based Query Generator. 
-Open the file `example_sims/users/core_LLM_based_Queries.xml. This file is used to define how the LLM generates queries.
+Open the file `example_sims/users/core_LLM_based_Queries.xml`. This file is used to define how the LLM generates queries.
 Make sure to update the following line to specify the model you want to use:
 ```xml
 
