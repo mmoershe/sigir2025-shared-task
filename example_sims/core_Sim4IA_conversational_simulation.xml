@@ -21,6 +21,11 @@ Date:   2024-04-20
 	    
 		<topic id="1" filename="../example_data/CORE/topics_Task_B/topic.1" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="2" filename="../example_data/CORE/topics_Task_B/topic.2" qrelsFilename="../example_data/CORE/core.qrels" />
+		<!--
+
+		As it was stated in the tutorial, for running Task B in Codespaces only the first 2 topics are used due to very slow runtimes. If you want to run the full simulation on all topics, you have to setup the docker locally and reintegrate the following topics in the xml. 
+		-->
+		<!--
 	    <topic id="3" filename="../example_data/CORE/topics_Task_B/topic.3" qrelsFilename="../example_data/CORE/core.qrels" />
 		<topic id="4" filename="../example_data/CORE/topics_Task_B/topic.4" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="5" filename="../example_data/CORE/topics_Task_B/topic.5" qrelsFilename="../example_data/CORE/core.qrels" />
@@ -64,7 +69,7 @@ Date:   2024-04-20
 		<topic id="43" filename="../example_data/CORE/topics_Task_B/topic.43" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="44" filename="../example_data/CORE/topics_Task_B/topic.44" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="45" filename="../example_data/CORE/topics_Task_B/topic.45" qrelsFilename="../example_data/CORE/core.qrels" />
-		
+	     -->
 	</topics>
 
 	<users>
