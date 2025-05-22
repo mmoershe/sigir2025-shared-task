@@ -88,7 +88,7 @@ Date:   2015-09-09
 		<attribute name="index_or_dir" type="string" value="../example_data/index_CORE/" is_argument="true" />
 		<attribute name="text_field" type="string" value="text" is_argument="true" />
         <attribute name="wmodel" type="string" value="BM25" is_argument="true" />
-        <attribute name="memory" type="boolean" value="true" is_argument="false" />
+        <attribute name="memory" type="boolean" value="false" is_argument="true" />
 	</searchInterface>
 	
 </simulationConfiguration>
