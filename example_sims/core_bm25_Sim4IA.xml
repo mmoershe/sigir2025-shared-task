@@ -38,7 +38,11 @@ Date:   2015-09-09
 	    <topic id="18" filename="../example_data/CORE/topics_Task_A/topic.18" qrelsFilename="../example_data/CORE/core.qrels" />
 		<topic id="19" filename="../example_data/CORE/topics_Task_A/topic.19" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="20" filename="../example_data/CORE/topics_Task_A/topic.20" qrelsFilename="../example_data/CORE/core.qrels" />
-	    <topic id="21" filename="../example_data/CORE/topics_Task_A/topic.21" qrelsFilename="../example_data/CORE/core.qrels" />
+	    <!--
+		As it was stated in the tutorial, for running Task A in Codespaces only the first 20 topics are used due to hardware limitations. If you want to run the full simulation on all topics, you have to setup the docker locally and reintegrate the following topics in the xml.   
+	    -->
+		<!--
+		<topic id="21" filename="../example_data/CORE/topics_Task_A/topic.21" qrelsFilename="../example_data/CORE/core.qrels" />
 		<topic id="22" filename="../example_data/CORE/topics_Task_A/topic.22" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="23" filename="../example_data/CORE/topics_Task_A/topic.23" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="24" filename="../example_data/CORE/topics_Task_A/topic.24" qrelsFilename="../example_data/CORE/core.qrels" />
@@ -63,6 +67,7 @@ Date:   2015-09-09
 		<topic id="43" filename="../example_data/CORE/topics_Task_A/topic.43" qrelsFilename="../example_data/CORE/core.qrels" />
 		<topic id="44" filename="../example_data/CORE/topics_Task_A/topic.44" qrelsFilename="../example_data/CORE/core.qrels" />
 	    <topic id="45" filename="../example_data/CORE/topics_Task_A/topic.45" qrelsFilename="../example_data/CORE/core.qrels" />
+		-->
  	</topics>
 	
 	<users>
