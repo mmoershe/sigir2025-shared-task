@@ -58,6 +58,8 @@ In Task A, the dataset also includes metadata about user interactions, including
 
 Detailed task descriptions for Task A and Task B are available on the [workshop website](https://sim4ia.org/sigir2025/). To run initial experiments for these tasks, follow the steps outlined below.
 
+> A short note on the examples used in this first tutorial: Although we provide more sessions for all tasks, we only included a smaller sample in the examples due to run time and memory restrictions in GitHub Codespaces. If you run the examples in a more potent local environment, all available sessions should and could be used. 
+
 1. Adjust your query reformulation approach 
     - You can find existing implementations in `simiir/user/query_generators/` for Task A1/A2 and `simiir/user/utterance_generators` for Task B
 2. Create a new user configuration that uses your query reformulation approach
@@ -86,6 +88,8 @@ If you decide to use a different model, make sure to adapt the configuration acc
 
 
 ## How to do the experiments with LLMs in Codespaces?
+
+> A short note on the usage of LLMs in Codespace: It's slow, and the resources are limited. But it works with smaller models and with enough patience. If you plan something more advanced, we advise you to run the LLM in a more potent local environment. 
 
 1. Check Available Disk Space.
 
