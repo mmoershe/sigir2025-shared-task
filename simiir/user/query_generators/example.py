@@ -1,4 +1,5 @@
 from simiir.user.query_generators.base import BaseQueryGenerator
+from ifind.common.utils import get_given_queries
 
 import random
 
@@ -14,9 +15,11 @@ class QuestionGenerator_A1(BaseQueryGenerator):
         self.__user = user
 
     def generate_query_list(self, user_context) -> list[tuple[str, int]]:
-        return_queries: list[tuple[str, int]] = self._get_given_queries(user_context)
+        return_queries: list[tuple[str, int]] = get_given_queries(
+            self, user_context, task_a2=False
+        )
 
-        new_query: tuple[str, int] = (self._create_question(return_queries[0][0]), 0)
+        new_query: tuple[str, int] = (self._create_question(return_queries[-1][0]), 0)
 
         return_queries.append(new_query)
 
@@ -34,24 +37,6 @@ class QuestionGenerator_A1(BaseQueryGenerator):
         question_query: str = f"{chosen_prefix} {query.strip()}?"
         return question_query
 
-    def _get_given_queries(self, user_context) -> list[tuple[str, int]]:
-        topic = user_context.topic
-        given_queries: list = []
-        queries_file = open(self.__query_filename, "r")
-
-        for line in queries_file:
-            line = line.strip()
-            line = line.split(",")
-
-            line_qid = line[0]
-            line_user = line[1]
-            line_topic = line[2]
-            line_terms = line[3]
-            if line_user == self.__user and line_topic == topic.id:
-                given_queries.append((line_terms, int(line_qid)))
-
-        queries_file.close()
-        return [given_queries[-2]]
 
 class QuestionGenerator_A2(BaseQueryGenerator):
     """
@@ -64,9 +49,11 @@ class QuestionGenerator_A2(BaseQueryGenerator):
         self.__user = user
 
     def generate_query_list(self, user_context) -> list[tuple[str, int]]:
-        return_queries: list[tuple[str, int]] = self._get_given_queries(user_context)
+        return_queries: list[tuple[str, int]] = get_given_queries(
+            self.__query_filename, self.__user, user_context.topic.id, task_a2=True
+        )
 
-        new_query: tuple[str, int] = (self._create_question(return_queries[0][0]), 0)
+        new_query: tuple[str, int] = (self._create_question(return_queries[-1][0]), 0)
 
         return_queries.append(new_query)
 
@@ -83,24 +70,3 @@ class QuestionGenerator_A2(BaseQueryGenerator):
         chosen_prefix: str = random.choice(prefixes)
         question_query: str = f"{chosen_prefix} {query.strip()}?"
         return question_query
-
-    def _get_given_queries(self, user_context) -> list[tuple[str, int]]:
-        topic = user_context.topic
-        given_queries: list = []
-        queries_file = open(self.__query_filename, "r")
-
-        for line in queries_file:
-            line = line.strip()
-            line = line.split(",")
-
-            line_qid = line[0]
-            line_user = line[1]
-            line_topic = line[2]
-            line_terms = line[3]
-
-            if line_user == self.__user and line_topic == topic.id:
-                given_queries.append((line_terms, int(line_qid)))
-
-        queries_file.close()
-        return given_queries[:-1]
-    
