@@ -16,7 +16,7 @@ class QuestionGenerator_A1(BaseQueryGenerator):
 
     def generate_query_list(self, user_context) -> list[tuple[str, int]]:
         return_queries: list[tuple[str, int]] = get_given_queries(
-            self, user_context, task_a2=False
+            self.__query_filename, self.__user, user_context.topic.id, task_a2=False
         )
 
         new_query: tuple[str, int] = (self._create_question(return_queries[-1][0]), 0)
