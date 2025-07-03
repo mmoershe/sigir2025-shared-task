@@ -1,126 +1,73 @@
 import random
-import numpy as np
 from simiir.user.query_generators.base import BaseQueryGenerator
 from ifind.common.utils import get_given_queries
 
 class AdvancedQuestionQueryGenerator(BaseQueryGenerator):
     """
-    Query-Generator basierend auf Wahrscheinlichkeiten und POS-Mustern,
-    der Fragen mit variablem Satzbau generiert.
+        This generator uses a combination of randomly selected "wh-words" (e.g. How, What, Why)
+        and predefined question templates to form meaningful questions related to the topic.
+        It adds realistic sentence endings (question mark, period, or none) based on
+        observed user behavior.
     """
 
-    def __init__(self, user=None, query_file: str=None, stopword_file=None, background_file=[]):
+    def __init__(self, stopword_file=None, query_file=None, user=None, background_file=[]):
         super().__init__(stopword_file, background_file=background_file)
-
-        self.user_context = user
-
         self.__query_filename = query_file
         self.__user = user
 
+    
         self.w_words = {
-            "how": 0.455,
-            "what": 0.269,
-            "why": 0.095,
-            "is": 0.035,
-            "does": 0.034,
-            "do": 0.033,
-            "can": 0.031,
-            "are": 0.025,
-            "when": 0.021,
-            "who": 0.011,
+            "How": 0.455,
+            "What": 0.269,
+            "Why": 0.095,
+            "Is": 0.035,
+            "Does": 0.034,
+            "Do": 0.033,
+            "Can": 0.031,
+            "Are": 0.025,
+            "When": 0.021,
+            "Who": 0.011,
         }
 
-        self.pos_patterns = {
-            "SPACE DET NOUN VERB NOUN PART VERB ADP NOUN": 0.1836,
-            "PRON AUX NOUN": 0.1561,
-            "AUX PART VERB ADP PROPN CCONJ NOUN PUNCT": 0.1347,
-            "SCONJ AUX DET NOUN ADP DET NOUN VERB DET ADJ NOUN CCONJ NOUN PUNCT NOUN ADP PROPN NOUN": 0.1263,
-            "PRON AUX ADJ NOUN CCONJ PUNCT PROPN CCONJ PROPN PUNCT": 0.0858,
-            "PRON AUX ADJ NOUN": 0.0787,
-            "PRON AUX NOUN CCONJ PUNCT PROPN CCONJ PROPN PUNCT": 0.0620,
-            "PRON AUX NOUN PUNCT CCONJ PUNCT PROPN CCONJ NUM PUNCT": 0.0596,
-            "SCONJ PART VERB NOUN NOUN": 0.0572,
-            "SCONJ PART VERB ADJ NOUN NOUN": 0.0560,
-        }
+        
+        self.templates = [
+            "{w_word} does {topic} affect people in different regions",
+            "{w_word} are the main causes of {topic}",
+            "{w_word} can be done to prevent {topic}",
+            "{w_word} is the cultural significance of {topic}",
+            "{w_word} are the effects of {topic} on education",
+            "{w_word} can governments do about {topic}",
+            "{w_word} is public opinion on {topic}",
+            "{w_word} can we raise awareness about {topic}",
+            "{w_word} role does media play in shaping views on {topic}",
+            "{w_word} are common misconceptions about {topic}"
+        ]
 
-         # Realistische Dummy-Wörter pro POS-Tag
-        self.dummy_words = {
-            "ADJ": ['academic', 'financial', 'social', 'teenage', 'short', 'genital', 'senior', 'high', 'personal', 'cultural'],
-            "NOUN": ['students', 'school', 'media', 'effects', 'regulations', 'corporation', 'literacy', 'experience', 'impact', 'grade'],
-            "PROPN": ['yearpublished<=2025', 'philippines', 'high', 'school', 'senior', 'yearpublished>=2018', 'egypt', 'social', 'thailand', 'yearpublished>=2020'],
-            "VERB": ['learning', 'discussing', 'assessing', 'understanding', 'lived', 'encounter', 'related', 'love', 'ai', 'calling'],
-            "NUM": ['yearpublished<=2024', '11', '2024', '2020', '2018', '2015', '5', '9'],
-            "SPACE": [' '],
-            "DET": ['the'],
-            "PRON": ['oneself'],
-            "AUX": ['is'],
-            "CCONJ": ['and'],
-            "ADP": ['in'],
-            "PUNCT": ['.'],
-            "PART": ['to'],
-            "SCONJ": ['how', 'because', 'although']
-        }
-
-
-    def weighted_choice(self, choices):
-        items = list(choices.items())
-        elements, weights = zip(*items)
+    def weighted_choice(self, choices: dict) -> str:
+        elements, weights = zip(*choices.items())
         return random.choices(elements, weights=weights, k=1)[0]
 
-    def generate_query_list(self, user_context):
-        print()
-        print()
-        print(f"{self.__query_filename = }")
-        print(f"{self.__user = }")
-        print(f"{user_context.topic.id = }")
-
+    def generate_query_list(self, user_context) -> list[tuple[str, int]]:
         return_queries: list[tuple[str, int]] = get_given_queries(
             self.__query_filename, self.__user, user_context.topic.id, task_a2=True
         )
-        print(f"{return_queries = }")
-        print()
-        topic = return_queries[0][0]
-        queries = []
 
-        # Anzahl Queries, z.B. 5
-        for _ in range(5):
-            # 29% Wahrscheinlichkeit für Fragezeichen
-            question_mark = "?" if random.random() < 0.29 else ""
+    
+        for _ in range(10):
+            new_query: tuple[str, int] = (self._create_question(return_queries[-1][0]), 1)
+            return_queries.append(new_query)
 
-            # 70% Wahrscheinlichkeit mit W-Fragewort zu starten
-            if random.random() < 0.7:
-                w_word = self.weighted_choice(self.w_words)
-                query_words = [w_word]
-            else:
-                query_words = []
+        return return_queries
 
-            # Wortlänge mit Mittelwert 11.3, SD = 4 (mindestens 3 Wörter)
-            length = max(3, int(np.random.normal(11.3, 4)))
 
-            # POS-Muster auswählen (gewichtet)
-            pattern = self.weighted_choice(self.pos_patterns)
-            pos_tags = pattern.split()
+    def _create_question(self, topic: str) -> str:
+        w_word = self.weighted_choice(self.w_words)
+        template = random.choice(self.templates)
+        question = template.format(w_word=w_word, topic=topic).strip()
+        question += self._choose_ending()
+        return question
 
-            # Muster an Länge anpassen
-            if len(pos_tags) > length:
-                pos_tags = pos_tags[:length]
-            elif len(pos_tags) < length:
-                pos_tags += ["NOUN"] * (length - len(pos_tags))
-
-            # Wörter aus dummy map holen, topic als Noun ersetzen
-            words = []
-            for tag in pos_tags:
-                if tag == "NOUN":
-                    words.append(topic)
-                else:
-                    words.append(self.dummy_words.get(tag, "word"))
-
-            # Duplikat vermeiden, falls w_word schon als erstes steht
-            if query_words and words and words[0] == query_words[0]:
-                words = words[1:]
-
-            # query = " ".join(query_words + words).strip() + question_mark
-            query = " ".join(str(word) for word in query_words + words).strip() + question_mark
-            queries.append((query, 1))
-
-        return queries
+    def _choose_ending(self) -> str:
+        endings = ["?", ".", ""]  
+        weights = [0.29, 0.22, 0.49]
+        return random.choices(endings, weights=weights, k=1)[0]
