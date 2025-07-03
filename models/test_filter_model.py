@@ -8,13 +8,13 @@ CURRENT_DIRECTORY: str = os.path.dirname(__file__)
 lora_adapter_dir: str = os.path.join(CURRENT_DIRECTORY, "filter_checkpoint")
 
 # Path or repo ID of your base model
-ssase_model_path = "meta-llama/Llama-3.2-3B"
+base_model_directory: str = os.path.join(CURRENT_DIRECTORY, "llama-3.2-3b")
 
 # Load tokenizer (from LoRA dir or base model)
 tokenizer = AutoTokenizer.from_pretrained(lora_adapter_dir)
 
 # Load base model
-base_model = AutoModelForCausalLM.from_pretrained(base_model_path)
+base_model = AutoModelForCausalLM.from_pretrained(base_model_directory)
 
 # Load LoRA adapters onto the base model
 model = PeftModel.from_pretrained(base_model, lora_adapter_dir).to("cuda")
