@@ -73,8 +73,7 @@ Date:   2015-09-09
         <user configurationFile="../example_sims/users/CORE_tri_term_query_user_DIS22.xml" />
 		<user configurationFile="../example_sims/users/CORE_predetermined_query_user_DIS22.xml" />
         -->
-		<user configurationFile="../example_sims/users/core_predetermined_query_user_Sim4IA_TaskA1.xml" />
-		<user configurationFile="../example_sims/users/core_predetermined_query_user_Sim4IA_TaskA2.xml" />
+		<user configurationFile="../example_sims/users/core_advanced_question_generator.xml" />
 
 
 		<!--

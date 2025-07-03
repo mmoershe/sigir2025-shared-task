@@ -53,7 +53,7 @@ class OutputController(object):
         """
         Sends a prettified version of the current simulation's configuration to stdout.
         """
-        os.system('cls' if os.name == 'nt' else 'clear')
+        # os.system('cls' if os.name == 'nt' else 'clear')
         
         simulation_base_id = self.__simulation_configuration.base_id
         print("SIMULATION '{0}'".format(simulation_base_id))

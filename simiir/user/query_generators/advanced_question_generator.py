@@ -1,6 +1,7 @@
 import random
 import numpy as np
 from simiir.user.query_generators.base import BaseQueryGenerator
+from ifind.common.utils import get_given_queries
 
 class AdvancedQuestionQueryGenerator(BaseQueryGenerator):
     """
@@ -8,8 +9,13 @@ class AdvancedQuestionQueryGenerator(BaseQueryGenerator):
     der Fragen mit variablem Satzbau generiert.
     """
 
-    def __init__(self, stopword_file=None, background_file=[]):
+    def __init__(self, user=None, query_file: str=None, stopword_file=None, background_file=[]):
         super().__init__(stopword_file, background_file=background_file)
+
+        self.user_context = user
+
+        self.__query_filename = query_file
+        self.__user = user
 
         self.w_words = {
             "how": 0.455,
@@ -62,7 +68,18 @@ class AdvancedQuestionQueryGenerator(BaseQueryGenerator):
         return random.choices(elements, weights=weights, k=1)[0]
 
     def generate_query_list(self, user_context):
-        topic = user_context.topic.title.strip().rstrip("?")
+        print()
+        print()
+        print(f"{self.__query_filename = }")
+        print(f"{self.__user = }")
+        print(f"{user_context.topic.id = }")
+
+        return_queries: list[tuple[str, int]] = get_given_queries(
+            self.__query_filename, self.__user, user_context.topic.id, task_a2=True
+        )
+        print(f"{return_queries = }")
+        print()
+        topic = return_queries[0][0]
         queries = []
 
         # Anzahl Queries, z.B. 5
