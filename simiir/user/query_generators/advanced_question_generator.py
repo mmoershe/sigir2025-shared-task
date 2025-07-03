@@ -119,7 +119,8 @@ class AdvancedQuestionQueryGenerator(BaseQueryGenerator):
             if query_words and words and words[0] == query_words[0]:
                 words = words[1:]
 
-            query = " ".join(query_words + words).strip() + question_mark
+            # query = " ".join(query_words + words).strip() + question_mark
+            query = " ".join(str(word) for word in query_words + words).strip() + question_mark
             queries.append((query, 1))
 
         return queries
