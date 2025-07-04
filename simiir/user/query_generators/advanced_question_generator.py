@@ -49,7 +49,7 @@ class AdvancedQuestionQueryGenerator(BaseQueryGenerator):
 
     def generate_query_list(self, user_context) -> list[tuple[str, int]]:
         return_queries: list[tuple[str, int]] = get_given_queries(
-            self.__query_filename, self.__user, user_context.topic.id, task_a2=True
+            self.__query_filename, self.__user, user_context.topic.id, task_a2=False
         )
 
     
