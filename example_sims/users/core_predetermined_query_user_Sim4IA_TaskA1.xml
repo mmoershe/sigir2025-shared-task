@@ -2,7 +2,7 @@
 	
 	<queryGenerator class="QuestionGenerator_A1">
 		<attribute name="stopword_file" type="string" value="../example_data/terms/stopwords.txt" is_argument="true" />
-		<attribute name="query_file" type="string" value="../simiir/predetermined_queries_Task_A.csv" is_argument="true" />
+		<attribute name="query_file" type="string" value="../simiir/predetermined_queries_Task_A_test.csv" is_argument="true" />
 		<attribute name="user" type="string" value="test_user" is_argument="true" />
 	</queryGenerator>
 
